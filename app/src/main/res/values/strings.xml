@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Doctor Search</string>
+
+    <string name="login_title">Doctor Search Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="auth_service_error">An error occurred in auth service</string>
+</resources>
