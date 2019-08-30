@@ -6,8 +6,8 @@ data class DoctorDTO(
     var highlighted: Boolean,
     var id: String,
     var integration: String,
-    var lat: Long,
-    var lng: Long,
+    var lat: Double,
+    var lng: Double,
     var name: String,
     var photoId: String
 )

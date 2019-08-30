@@ -2,6 +2,8 @@ package br.com.assestment.android.docsearch
 
 import android.accounts.Account
 import android.accounts.AccountManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
@@ -10,13 +12,21 @@ import android.widget.Toast
 import br.com.assestment.android.docsearch.auth.AccountAuthenticator
 import br.com.assestment.android.docsearch.model.auth.dto.TokenResponse
 import br.com.assestment.android.docsearch.services.ServicesHelper
-import br.com.assestment.android.docsearch.services.`interface`.AccessTokenServiceInterface
+import br.com.assestment.android.docsearch.services.`interface`.AuthServicesInterface
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+    companion object {
+        fun intentToShowClearTask(context: Context): Intent {
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            return intent
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +43,8 @@ class LoginActivity : AppCompatActivity() {
     private fun userIsLogged(): Boolean {
         val accountType = AccountAuthenticator.ACCOUNT_TYPE
         val am = AccountManager.get(applicationContext)
-        val sbAccounts = am.getAccountsByType(accountType)
-        if (sbAccounts.size > 0 && sbAccounts[0].type.equals(accountType, ignoreCase = true)) {
+        val dsAccounts = am.getAccountsByType(accountType)
+        if (dsAccounts.size > 0 && dsAccounts[0].type.equals(accountType, ignoreCase = true)) {
             return true
         }
 
@@ -51,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = password.text.toString()
                 val authorization = "Basic aXBob25lOmlwaG9uZXdpbGxub3RiZXRoZXJlYW55bW9yZQ=="
                 val retrofitClient = ServicesHelper.client(true)
-                val endpoint = retrofitClient?.create(AccessTokenServiceInterface::class.java)
+                val endpoint = retrofitClient?.create(AuthServicesInterface::class.java)
                 val callback = endpoint?.getAccessToken(
                     "password",
                     username, password, authorization

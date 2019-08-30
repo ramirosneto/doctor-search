@@ -4,7 +4,7 @@ import br.com.assestment.android.docsearch.model.auth.dto.TokenResponse
 import retrofit2.Call
 import retrofit2.http.*
 
-interface AccessTokenServiceInterface {
+interface AuthServicesInterface {
 
     @POST("oauth/token")
     fun getAccessToken(

@@ -7,5 +7,11 @@
     <string name="action_sign_in">Sign in</string>
     <string name="invalid_email">Invalid email</string>
     <string name="invalid_password">Invalid password</string>
-    <string name="auth_service_error">An error occurred in auth service</string>
+    <string name="retrieving_location">Retrieving location. Try again please.</string>
+    <string name="empty_view_message">No matching doctors found.</string>
+    <string name="auth_service_error">An error occurred in auth service.</string>
+
+    <!-- DESLOGATOR DIALOG -->
+    <string name="deslogator_dialog_title">Ops</string>
+    <string name="deslogator_dialog_message">An error occurred while doctor search. Please login again.</string>
 </resources>
